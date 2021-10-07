@@ -28,7 +28,7 @@
         </tr>
         @foreach ($posts as $post)
         <tr>
-            <td class="text-center">{{$loop->iteration}}</td>
+            <td class="text-center">{{ $loop->iteration }}</td>
             <td>{{ $post->title }}</td>
             <td class="text-center">
                 <form action="{{ route('posts.destroy',$post->id) }}" method="POST">
@@ -39,7 +39,6 @@
 
                     @csrf
                     @method('DELETE')
- 
                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Delete</button>
                 </form>
             </td>

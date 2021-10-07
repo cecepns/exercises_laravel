@@ -13,6 +13,7 @@
     <h1> Nama Saya {{$nama}} </h1>  
     <a class="btn btn-primary" href="{{ route('posts.index') }}"> Crud Post</a>
     <a class="btn btn-secondary" href="{{ url('/kuis') }}"> Kuis</a>
+    <a class="btn btn-danger" href="{{ url('/admin') }}"> Admin Quiz</a>
   </div>
 </body>
 </html>

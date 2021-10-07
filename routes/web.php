@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 // Class 
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\SoalController;
+use App\Http\Controllers\AdminKuisController;
 
 
 /*
@@ -24,11 +26,11 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/kuis', function () {
-    return view('kuis.kuis', [
-        "title" => "Kuis Page"
-    ]);
-});
+
+
 
 Route::resource('posts', PostController::class);
+Route::resource('kuis', SoalController::class);
+Route::resource('admin', AdminKuisController::class);
+Route::get('admin/manage-quiz/{id}', [AdminKuisController::class, 'managequiz']);
 

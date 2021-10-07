@@ -4,17 +4,17 @@
 
 <section class="quiz">
     <div class="row mt-5 mb-5">
-        <h1 class="w-100 text-center text-w"> Waktu : 60 </h1>
+        <h1 id="count-down" class="w-100 text-center text-w"> -- : -- </h1>
     </div>
+
+    @foreach ($soals as $soal)
 
     <div class="question-wrapper">
         <div class="number font-weight-bold h2">
-            1.
+        {{ $loop->iteration }}
         </div>
         <div class="question">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores magnam doloremque ratione quasi. Nihil,
-            ab. Architecto numquam voluptas corporis iure doloremque fugiat esse, excepturi laudantium distinctio alias
-            veniam consequuntur ad?
+           {{ $soal->soal }}
         </div>
     </div>
 
@@ -27,7 +27,7 @@
                             A.
                         </div>
                         <div class="answer-desc">
-                            This is some text within a card body.
+                            {{ $soal->pilihan_a }}
                         </div>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                             B.
                         </div>
                         <div class="answer-desc">
-                            This is some text within a card body.
+                             {{ $soal->pilihan_b }}
                         </div>
                     </div>
                 </div>
@@ -51,7 +51,8 @@
                             C.
                         </div>
                         <div class="answer-desc">
-                            This is some text within a card body.
+                        {{ $soal->pilihan_c }}
+
                         </div>
                     </div>
                 </div>
@@ -63,13 +64,46 @@
                             D.
                         </div>
                         <div class="answer-desc">
-                            This is some text within a card body.
+                        {{ $soal->pilihan_d }}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    @endforeach
+
 </section>
+
+
+<script>
+
+function startTimer(duration, display) {
+    let timer = duration, minutes, seconds;
+    let interval = setInterval(function () {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            display.textContent = minutes + ":" + seconds;
+
+            if (--timer < 0) {
+                timer = duration;
+                clearInterval(interval)
+                
+            }
+         }, 1000);
+}
+
+window.onload = () => {
+    let fiveMinutes = 60 * 1,
+        display = document.querySelector('#count-down');
+    startTimer(fiveMinutes, display);
+};
+
+</script>
 
 @endsection
