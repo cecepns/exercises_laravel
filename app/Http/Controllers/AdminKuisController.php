@@ -34,7 +34,7 @@ class AdminKuisController extends Controller
          
         return redirect()
                 ->route('admin.index')
-                ->with('success','Post created successfully.');
+                ->with('success','Kuis created successfully.');
     }
 
     
@@ -47,7 +47,7 @@ class AdminKuisController extends Controller
        $blog = Kuis::findOrFail($id);
        $blog->delete();
      
-       if($blog){
+       if($blog){ 
           return redirect()
                     ->route('admin.index')
                     ->with(['success' => 'Data Berhasil Dihapus!']);
@@ -56,16 +56,30 @@ class AdminKuisController extends Controller
 
   
 
-   public function managequiz()
+   public function managequiz($id)
    {    
-    $users = SoalKuis::join('soals', 'soal_kuis.id_soal', '=', 'soals.id')
-                       ->get(['soal_kuis.id_soal']);
+    $soalkuis = SoalKuis::leftJoin('soals', 'soal_kuis.id_soal', '=', 'soals.id')
+                        // ->where('soal_kuis.id_kuis', $id)
+                        ->get();
     
-    $listsoal = Soal::all();
+
     
-       return view('admin.manage', ['listsoal' => $listsoal, 
-                                    'soalkuis' => $users]);
+    // $listsoal = Soal::all();
+       return view('admin.manage', ['soalkuis' => $soalkuis,
+                                    'idkuis' => $id]);
+
    }
+
+    public function destroysoalquiz($id) {
+        $soalquiz = SoalKuis::findOrFail($id);
+        var_dump($soalquiz);
+        $soalquiz->delete();
+        if($soalquiz){
+           return redirect()
+                     ->back()
+                     ->with(['success' => 'Data Berhasil Dihapus!']);
+        } 
+    }
 
 
 

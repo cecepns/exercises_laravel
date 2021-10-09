@@ -33,4 +33,5 @@ Route::resource('posts', PostController::class);
 Route::resource('kuis', SoalController::class);
 Route::resource('admin', AdminKuisController::class);
 Route::get('admin/manage-quiz/{id}', [AdminKuisController::class, 'managequiz']);
+Route::get('admin/manage-quiz/destroy/{id}', [AdminKuisController::class, 'destroysoalquiz']);
 

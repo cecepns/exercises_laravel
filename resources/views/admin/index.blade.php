@@ -35,7 +35,7 @@
             <td>{{ $kuis->nama_kuis }}</td> 
             <td>{{ $kuis->tanggal_mulai }}</td>
             <td>
-                @if($kuis->status == 'open')
+                @if($kuis->status == 'OPEN')
                 <span class="badge badge-success">OPEN</span>
                 @else
                 <span class="badge badge-danger">CLOSE</span>
@@ -48,7 +48,7 @@
 
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Delete kuis</button>
+                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus Kuis</button>
                 
             </form>
             </td>
