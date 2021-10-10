@@ -8,7 +8,7 @@
                 <h2>Kelola Kuis</h2>
             </div>
             <div class="float-right">
-                <a class="btn btn-success" href="{{ route('admin.create') }}"> Create Kuis</a>
+                <a class="btn btn-success" href="{{ route('admin.create') }}"> Buat Kuis</a>
             </div>
         </div>
     </div>
@@ -24,7 +24,7 @@
     <table class="table table-bordered">
         <tr>
             <th width="20px" class="text-center">No</th>
-            <th width="280px"class="text-center">Nama Kuis</th>
+            <th width="280px"class="text-center">Kode Kuis</th>
             <th width="280px"class="text-center">Tanggal Kuis</th>
             <th width="280px"class="text-center">Status</th>
             <th width="280px"class="text-center">Action</th>
@@ -32,6 +32,8 @@
         @foreach ($listkuis as $kuis)
         <tr>
             <td class="text-center">{{ $loop->iteration }}</td>
+            <td>                <span class="badge badge-success">{{$kuis->kode_kuis}}</span>
+</td> 
             <td>{{ $kuis->nama_kuis }}</td> 
             <td>{{ $kuis->tanggal_mulai }}</td>
             <td>
@@ -44,11 +46,11 @@
             <td>
             <form action="{{ route('admin.destroy',$kuis->id) }}" method="POST">
 
-                <a class="btn btn-primary btn-sm" href="{{ url('/admin/manage-quiz', [$kuis->id]) }}">Kelola Kuis</a>
+                <a class="btn btn-primary btn-sm" href="{{ url('/admin/manage-quiz', [$kuis->id]) }}">Kelola Soal</a>
 
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus Kuis</button>
+                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">  Hapus Kuis</button>
                 
             </form>
             </td>

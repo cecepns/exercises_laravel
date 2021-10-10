@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SoalController;
 use App\Http\Controllers\AdminKuisController;
+use App\Http\Controllers\BankSoalController;
 
 
 /*
@@ -32,6 +33,7 @@ Route::get('/', function () {
 Route::resource('posts', PostController::class);
 Route::resource('kuis', SoalController::class);
 Route::resource('admin', AdminKuisController::class);
+Route::resource('manage-soal', BankSoalController::class);
 Route::get('admin/manage-quiz/{id}', [AdminKuisController::class, 'managequiz']);
 Route::get('admin/manage-quiz/destroy/{id}', [AdminKuisController::class, 'destroysoalquiz']);
 

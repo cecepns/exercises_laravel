@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Models\Kuis;
 use App\Models\Soal;
 use App\Models\SoalKuis;
@@ -30,7 +31,13 @@ class AdminKuisController extends Controller
         ]);
          
    
-        Kuis::create($request->all());
+        // Kuis::create($request->all());
+        Kuis::insert([
+            'kode_kuis' => Str::random(6),
+            'nama_kuis' => $request->nama_kuis,
+            'tanggal_mulai' => $request->tanggal_mulai,
+            'status' => $request->status
+        ]);
          
         return redirect()
                 ->route('admin.index')
