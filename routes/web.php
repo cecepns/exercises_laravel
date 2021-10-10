@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 // Class 
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\SoalController;
+use App\Http\Controllers\KuisController;
 use App\Http\Controllers\AdminKuisController;
 use App\Http\Controllers\BankSoalController;
 
@@ -31,9 +31,18 @@ Route::get('/', function () {
 
 
 Route::resource('posts', PostController::class);
-Route::resource('kuis', SoalController::class);
+Route::resource('kuis', KuisController::class);
+Route::get('search', [KuisController::class, 'searchkuis'])->name('search');
+
+
 Route::resource('admin', AdminKuisController::class);
 Route::resource('manage-soal', BankSoalController::class);
-Route::get('admin/manage-quiz/{id}', [AdminKuisController::class, 'managequiz']);
-Route::get('admin/manage-quiz/destroy/{id}', [AdminKuisController::class, 'destroysoalquiz']);
 
+
+Route::get('admin/manage-quiz/{id}', [AdminKuisController::class, 'managequiz']);
+Route::get('admin/manage-quiz/destroy/{id}', 
+[AdminKuisController::class, 'destroysoalquiz']);
+
+
+Route::get('admin/manage-soal/create/{id}', [BankSoalController::class, 'create']);
+Route::get('admin/manage-soal/{id}', [BankSoalController::class, 'index']);

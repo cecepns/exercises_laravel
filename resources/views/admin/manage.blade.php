@@ -5,8 +5,11 @@
 <div class="row mt-5 mb-5">
     <div class="col-lg-12 margin-tb">
         <div class="float-left">
-            <h2>Pilih Soal</h2>
+            <h2>Soal</h2>
         </div>
+        <!-- <div class="float-right">
+            <a class="btn btn-primary" href="{{ route('manage-soal', $idkuis) }}"> Buat soal</a>
+        </div> -->
 
     </div>
 </div>

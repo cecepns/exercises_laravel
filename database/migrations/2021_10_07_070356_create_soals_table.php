@@ -15,6 +15,7 @@ class CreateSoalsTable extends Migration
     {
         Schema::create('soals', function (Blueprint $table) {
             $table->id();
+            $table->string('id_kuis');
             $table->text('soal');
             $table->string('pilihan_a');
             $table->string('pilihan_b');

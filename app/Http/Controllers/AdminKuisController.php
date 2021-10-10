@@ -65,9 +65,8 @@ class AdminKuisController extends Controller
 
    public function managequiz($id)
    {    
-    $soalkuis = SoalKuis::leftJoin('soals', 'soal_kuis.id_soal', '=', 'soals.id')
-                        // ->where('soal_kuis.id_kuis', $id)
-                        ->get();
+    $soalkuis = Soal::where('id_kuis', $id)
+                    ->get();
     
 
     

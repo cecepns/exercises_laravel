@@ -7,10 +7,17 @@
             <h2>Buat Soal</h2>
         </div>
         <div class="float-right">
-            <a class="btn btn-secondary" href="{{ route('manage-soal.index') }}"> Back</a>
+            <a class="btn btn-secondary" href="{{ url('admin/manage-soal', $idkuis) }}"> Back</a>
         </div>
     </div>
 </div>
+
+@if ($message = Session::get('success'))
+<div class="alert alert-success">
+    <p>{{ $message }}</p>
+</div>
+@endif
+
  
 @if ($errors->any())
     <div class="alert alert-danger">
@@ -23,11 +30,13 @@
     </div>
 @endif
  
-<form action="{{ route('admin.store') }}" method="POST">
+<form action="{{ route('manage-soal.store') }}" method="POST">
     @csrf
  
      <div class="row mb-5">
         <div class="col-xs-12 col-sm-12 col-md-12">
+        <input type="hidden" name="id_kuis" class="form-control" value={{ $idkuis }}>
+
             <div class="form-group">
                 <strong>Soal:</strong>
                 <textarea type="text" name="soal" class="form-control" placeholder="Masukan Soal"></textarea>

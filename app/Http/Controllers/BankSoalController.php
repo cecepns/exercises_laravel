@@ -9,22 +9,24 @@ class BankSoalController extends Controller
 {
     
 
-    public function index()
+    public function index($idkuis)
     {
-        $listsoal = Soal::all();
+
+        $listsoal = Soal::where('id_kuis', $idkuis)->get();
         
-        return view('admin.soal.index', compact('listsoal'));
+        return view('admin.soal.index', ['listsoal' => $listsoal,'idkuis' =>$idkuis]);
     }
   
-    public function create()
+    public function create($idkuis)
     {
-        return view('admin.soal.create');
+        return view('admin.soal.create', ['idkuis' => $idkuis]);
     }
 
   
     public function store(Request $request)
     {
         $request->validate([
+            'id_kuis' => 'required',
             'soal' => 'required',
             'pilihan_a' => 'required',
             'pilihan_b' => 'required',
@@ -38,7 +40,7 @@ class BankSoalController extends Controller
        
          
         return redirect()
-                ->route('admin.soal.index')
+                ->back()
                 ->with('success','Soal created successfully.');
     }
 
@@ -46,5 +48,24 @@ class BankSoalController extends Controller
    public function show(){
        
    }
+
+
+   public function destroy($id)
+    {
+        $soalquiz = Soal::findOrFail($id);
+        if($soalquiz){
+           $soalquiz->delete();
+           return redirect()
+                     ->back()
+                     ->with(['success' => 'Data Berhasil Dihapus!']);
+        } 
+    }
+
+    public function addsoalquiz($id)
+    {
+        // $listsoal = Soal::all();
+        
+        return view('admin.soal.create');
+    }
 
 }

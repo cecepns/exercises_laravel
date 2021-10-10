@@ -8,7 +8,7 @@
             <h2>Kelola Soal</h2>
         </div>
         <div class="float-right">
-            <a class="btn btn-success" href="{{ route('manage-soal.create') }}"> Buat Soal</a>
+            <a class="btn btn-success" href="{{ url('admin/manage-soal/create', $idkuis) }}"> Buat Soal</a>
         </div>
     </div>
 </div>
@@ -44,9 +44,7 @@
             <span class="badge badge-success">{{$soal->kunci_jawaban}}</span>
         </td>
         <td>
-            <form action="{{ route('admin.destroy',$soal->id) }}" method="POST">
-
-                <a class="btn btn-primary btn-sm" href="{{ url('/admin/manage-quiz', [$soal->id]) }}">Edit Soal</a>
+            <form action="{{ route('manage-soal.destroy',$soal->id) }}" method="POST">
 
                 @csrf
                 @method('DELETE')

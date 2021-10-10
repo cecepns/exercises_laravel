@@ -46,7 +46,7 @@
             <td>
             <form action="{{ route('admin.destroy',$kuis->id) }}" method="POST">
 
-                <a class="btn btn-primary btn-sm" href="{{ url('/admin/manage-quiz', [$kuis->id]) }}">Kelola Soal</a>
+                <a class="btn btn-primary btn-sm" href="{{ url('/admin/manage-soal', [$kuis->id]) }}">Kelola Soal</a>
 
                 @csrf
                 @method('DELETE')
