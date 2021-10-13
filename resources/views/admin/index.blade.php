@@ -24,6 +24,7 @@
     <table class="table table-bordered">
         <tr>
             <th width="20px" class="text-center">No</th>
+            <th width="280px"class="text-center">Nama Kuis</th>
             <th width="280px"class="text-center">Kode Kuis</th>
             <th width="280px"class="text-center">Tanggal Kuis</th>
             <th width="280px"class="text-center">Status</th>
